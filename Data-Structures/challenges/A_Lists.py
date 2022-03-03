@@ -181,25 +181,97 @@ def right_rotate(lst, k):
         return [lst[0]]
     # List has more than 1 value
     else:
-        retVal = []
-        complete = False
+        # list length % k will give the first number in the iterated list (right to left).
+        k = k % len(lst)
+        # With the first number identified (k), make a new list:
+        # - Starting from the first element from right (-k) to the end of the list
+        # - Appended with the beginning of the list to the first element (from the right -k)
+        ret = lst[-k:] + lst[:-k]
+        return ret
 
-        if(k <= len(lst)):
-            start = len(lst) - k
+
+##################################################
+# CHALLENGE 9
+# Implement a function rearrange(lst) which rearranges the elements such that all the negative elements appear on the left and positive elements appear at the right of the list. Note that it is not necessary to maintain the sorted order of the input list.
+# Input     - A list      [10,-1,20,4,5,-9,-6]
+# Output    - A list      [-1,-9,-6,10,20,4,5]
+##################################################
+
+
+def rearrange(lst):
+    pos = []
+    neg = []
+    # Loop through lst. Append positive numbers to pos and negative to neg
+    for num in lst:
+        if(num < 0):
+            neg.append(num)
         else:
-            start = len(lst) - (k % len(lst))
+            pos.append(num)
+    # Return the combined list of neg first then pos last
+    return neg + pos
 
-        inc = start
 
-        while(complete == False):
-            retVal.append(lst[inc])
+##################################################
+# CHALLENGE 10
+# Implement a function called max_min(lst) which will re-arrange the elements of a sorted list such that the 0th index will have the largest number, the 1st index will have the smallest, and the 2nd index will have second-largest, and so on. In other words, all the even-numbered indices will have the largest numbers in the list in descending order and the odd-numbered indices will have the smallest numbers in ascending order.
+# Input     - A sorted list      [1,2,3,4,5]
+# Output    - A list with elements stored in max/min form      [5,1,4,2,3]
+##################################################
 
-            if(inc + 1 > len(lst) - 1):
-                inc = 0
-            else:
-                inc += 1
 
-            if(inc == start):
-                complete = True
+def max_min(lst):
+    ind1 = 0
+    ind2 = len(lst) - 1
+    ret = []
 
-        return retVal
+    # List is small, return the list
+    if(len(lst) < 1):
+        return lst
+
+    # Loop through the list, outside to inside using indexes
+    while(ind1 <= ind2):
+        if(ind1 == ind2):
+            # Both indexes are the same so reached middle number (odd list), just append to end of the list
+            ret.append(lst[ind1])
+            ind1 += 1
+        else:
+            # Append the last value then the first value.
+            # Incredent beginning index
+            # Decrement end index
+            ret.append(lst[ind2])
+            ret.append(lst[ind1])
+            ind1 += 1
+            ind2 -= 1
+
+    return ret
+
+##################################################
+# CHALLENGE 11
+# Given an unsorted list AA, the maximum sum sub list is the sub list (contiguous elements) from AA for which the sum of the elements is maximum. In this challenge, we want to find the sum of the maximum sum sub list. This problem is a tricky one because the list might have negative integers in any position, so we have to cater to those negative integers while choosing the continuous sublist with the largest positive values.
+# Input     - A list      [-4, 2, -5, 1, 2, 3, 6, -5, 1]
+# Output    - A number 12 (1+2+3+6)
+##################################################
+
+
+def find_max_sum_sublist(lst):
+    # Keep track of the current max sum value.
+    # If at any point current max > total max, then update total.
+    currMax = lst[0]
+    totalMax = lst[0]
+
+    # Iterate through the whole list
+    for i in range(len(lst)):
+        if(currMax < 0):
+            # If currMax is less than 0, update to the new value.
+            # It's fine if the new value is less than the previous value (old val = -1, new val= -5).
+            # Because the totalMax will keep track of the old (bigger) value.
+            currMax = lst[i]
+        else:
+            # If currMax is > 0, then just keep adding the next values
+            currMax += lst[i]
+
+        # Update totalMax if currMax at any point reaches above totalMax
+        if(totalMax < currMax):
+            totalMax = currMax
+
+    return totalMax

@@ -129,6 +129,57 @@ class tstLists(unittest.TestCase):
         expected = ['python', 'right', 'rotate']
         self.assertEqual(actual, expected)
 
+    # Challenge 9: Rearrange Positives & Negative Values
+    def test_add_rearrange1(self):
+        actual = A_Lists.rearrange([-1, 2, -3, -4, 5])
+        expected = [-1, -3, -4, 2, 5]
+        self.assertEqual(actual, expected)
+
+    def test_add_rearrange2(self):
+        actual = A_Lists.rearrange([300, -1, 3, 0])
+        expected = [-1, 300, 3, 0]
+        self.assertEqual(actual, expected)
+
+    def test_add_rearrange3(self):
+        actual = A_Lists.rearrange([0, 0, 0, -2])
+        expected = [-2, 0, 0, 0]
+        self.assertEqual(actual, expected)
+
+    def test_add_max_min1(self):
+        actual = A_Lists.max_min([1, 2, 3, 4, 5, 6, 7])
+        expected = [7, 1, 6, 2, 5, 3, 4]
+        self.assertEqual(actual, expected)
+
+    def test_add_max_min2(self):
+        actual = A_Lists.max_min([1, 2, 3, 4, 5])
+        expected = [5, 1, 4, 2, 3]
+        self.assertEqual(actual, expected)
+
+    def test_add_max_min3(self):
+        actual = A_Lists.max_min([])
+        expected = []
+        self.assertEqual(actual, expected)
+
+    def test_add_max_min4(self):
+        actual = A_Lists.max_min([1, 1, 1, 1, 1])
+        expected = [1, 1, 1, 1, 1]
+        self.assertEqual(actual, expected)
+
+    def test_add_max_min5(self):
+        actual = A_Lists.max_min([-10, -1, 1, 1, 1, 1])
+        expected = [1, -10, 1, -1, 1, 1]
+        self.assertEqual(actual, expected)
+
+    def test_add_find_max_sum_sublist1(self):
+        actual = A_Lists.find_max_sum_sublist([-4, 2, -5, 1, 2, 3, 6, -5, 1])
+        expected = 12
+        self.assertEqual(actual, expected)
+
+    def test_add_find_max_sum_sublist2(self):
+        actual = A_Lists.find_max_sum_sublist([-4, -5, -1, -5])
+        expected = -1
+        self.assertEqual(actual, expected)
+
     # def test_add_(self):
     #     actual =
     #     expected =
