@@ -1,8 +1,11 @@
 from challenges import A_Lists
 import unittest
 
+# Test Cases for all List Challenges
+
 
 class tstLists(unittest.TestCase):
+    # Challenge 1: Remove Even Integers from List
     def test_add_LstRemoveEven1(self):
         actual = A_Lists.remove_even([1, 2, 4, 5, 10, 6, 3])
         expected = [1, 5, 3]
@@ -14,6 +17,7 @@ class tstLists(unittest.TestCase):
         expected = [-167, 43, -85, 111, 109, -133, -69, -41, -43, 69, 93, -9]
         self.assertEqual(actual, expected)
 
+    # Challenge 2: Merge Two Sorted Lists
     def test_add_merge_lists1(self):
         actual = A_Lists.merge_lists([1, 3, 4, 5], [2, 6, 7, 8])
         expected = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -45,11 +49,13 @@ class tstLists(unittest.TestCase):
         expected = [-2000, -133, -100, 0, 4, 2000]
         self.assertEqual(actual, expected)
 
+    # Challenge 3: Find Two Numbers that Add up to "k"
     def test_add_findSum1(self):
         actual = A_Lists.find_sum([1, 21, 3, 14, 5, 60, 7, 6], 81)
         expected = [21, 60]
         self.assertEqual(actual, expected)
 
+    # Challenge 4: List of Products of all Elements
     def test_add_find_product1(self):
         actual = A_Lists.find_product([1, 2, 3, 4])
         expected = [24, 12, 8, 6]
@@ -70,6 +76,7 @@ class tstLists(unittest.TestCase):
         expected = [0, 0, 0, 0, 0, 0]
         self.assertEqual(actual, expected)
 
+    # Challenge 5: Find Minimum Value in List
     def test_add_find_minimum1(self):
         actual = A_Lists.find_minimum([100, 12, 34, 40])
         expected = 12
@@ -80,6 +87,7 @@ class tstLists(unittest.TestCase):
         expected = 0
         self.assertEqual(actual, expected)
 
+    # Challenge 7: Find Second Max Value in a List
     def test_add_find_second_maximum1(self):
         actual = A_Lists.find_second_maximum([9, 2, 3, 6])
         expected = 6
@@ -90,6 +98,7 @@ class tstLists(unittest.TestCase):
         expected = 4
         self.assertEqual(actual, expected)
 
+    # Challenge 8: Right Rotate List
     def test_add_right_rotate1(self):
         actual = A_Lists.right_rotate([], 1)
         expected = []
